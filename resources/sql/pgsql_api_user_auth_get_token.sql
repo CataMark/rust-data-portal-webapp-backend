@@ -1,0 +1,1 @@
+select * from portal.tbl_int_user_authentication as a where a.user_id = $1;

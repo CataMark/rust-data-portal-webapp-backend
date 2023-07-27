@@ -1,0 +1,4 @@
+select
+    *
+from portal.tbl_int_app_transactions as a
+where a.id = $1;

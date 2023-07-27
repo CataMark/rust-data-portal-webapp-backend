@@ -1,0 +1,22 @@
+### login
+
+GET {{baseUrl}}/login HTTP/1.1
+
+{
+    "user_id": "cmutica"
+}
+
+### authenticate
+
+GET {{baseUrl}}/auth?atk=eyJhbGciOiJSUzUxMiJ9.eyJleHAiOjE2NzYwNTc3MjcsImlhdCI6MTY3NjA1NzEyNywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwIiwianRpIjoiNTFmN2E2MDAtMGZiZC00ODQwLTkwN2MtMGEwZmMzMjJjN2Y2Iiwic3ViIjoiY211dGljYSJ9.niQN9AQ3nHO3oPhe1zmuBgRPo01ntqLqs8JT07Wt9X6-v-uvh0mr_2sG7pM7v6yNgg6Ypci9VOql3Sbv_KQCQZgLnIGQAWPiczUQYSXZQ30dkka9PstOcyrpz9wIoIU3J4NqPGHjSRKYFQgJtq1OKxniUqGoryuAkniFiVDaZYeu8VCSOFPY5HtJ-choy3p9iOBP7twYFzC4Nt8J9Uio3LqHsemFlkgm0mmVzDJdOGu6pFR5VPg7Sw9twWO6qV_cZB1ZN9wXuTrjfL07VKLWj2CjO3NYLAGXp3sanzwYgfQOrB_5c-yz0DjcXSiblxF2tMJqfJTM_BdgJGNlm9qN1g HTTP/1.1
+
+### authorisation check
+
+GET {{baseUrl}}/auth/isauth HTTP/1.1
+x-Auth-Token: {{authToken}}
+
+### get authorised user
+
+GET {{baseUrl}}/auth/user HTTP/1.1
+x-Auth-Token: {{authToken}}
+

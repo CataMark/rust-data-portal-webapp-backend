@@ -1,0 +1,1 @@
+select * from portal.tbl_int_users as a where a.user_id = $1 limit 1;

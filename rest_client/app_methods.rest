@@ -1,0 +1,157 @@
+### get app codes
+
+GET {{baseUrl}}/app_methods/app_codes HTTP/1.1
+x-Auth-Token: {{authToken}}
+
+### get all methods
+
+GET {{baseUrl}}/app_methods HTTP/1.1
+x-Auth-Token: {{authToken}}
+
+### get methods by app code
+
+GET {{baseUrl}}/app_methods?q=portal HTTP/1.1
+x-Auth-Token: {{authToken}}
+
+### upser app method
+# @name upsertReq
+POST {{baseUrl}}/app_methods HTTP/1.1
+x-Auth-Token: {{authToken}}
+Content-Type: application/json
+
+{
+    "app_code": "portal",
+    "method_code": "testare",
+    "descr": "testing"
+}
+
+### get method by id
+@upsertId = {{upsertReq.response.body.$.id}}
+GET {{baseUrl}}/app_methods/{{upsertId}} HTTP/1.1
+x-Auth-Token: {{authToken}}
+
+### delete by id
+
+DELETE {{baseUrl}}/app_methods/{{upsertId}} HTTP/1.1
+x-Auth-Token: {{authToken}}
+
+### download all methods in xlsx
+
+GET {{baseUrl}}/app_methods/xlsx HTTP/1.1
+x-Auth-Token: {{authToken}}
+
+### download methods by app code in xlsx
+
+GET {{baseUrl}}/app_methods/xlsx?q=portal HTTP/1.1
+x-Auth-Token: {{authToken}}
+
+### download all methods in csv
+
+GET {{baseUrl}}/app_methods/csv HTTP/1.1
+x-Auth-Token: {{authToken}}
+
+### download methods by app code in csv
+
+GET {{baseUrl}}/app_methods/csv?q=portal HTTP/1.1
+x-Auth-Token: {{authToken}}
+
+### upload all methods from xlsx
+
+POST {{baseUrl}}/app_methods/xlsx HTTP/1.1
+x-Auth-Token: {{authToken}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="fisier"; filename="app_transactions_all.xlsx"
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+< C:\\~\\Documents\\projects\\999_testing_data\\app_transactions_all.xlsx
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### upload methods by app code from xlsx
+
+POST {{baseUrl}}/app_methods/xlsx HTTP/1.1
+x-Auth-Token: {{authToken}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="app_code";
+
+portal
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="sheet_name";
+
+DATA
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="fisier"; filename="app_transactions_for_portal.xlsx"
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+< C:\\~\\Documents\\projects\\999_testing_data\\app_transactions_for_portal.xlsx
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### upload all methods from text file, columns split by comma
+
+POST {{baseUrl}}/app_methods/csv HTTP/1.1
+x-Auth-Token: {{authToken}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="column_delimiter";
+
+,
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="column_quote";
+
+"
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="fisier"; filename="app_transactions_all.xlsx"
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+< C:\\~\\Documents\\projects\\999_testing_data\\app_transactions_all.csv
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### upload all methods from text file, columns split by tab
+@tab_token=\t
+POST {{baseUrl}}/app_methods/csv HTTP/1.1
+x-Auth-Token: {{authToken}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="column_delimiter";
+
+{{tab_token}}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="column_quote";
+
+"
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="fisier"; filename="app_transactions_all.xlsx"
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+< C:\\~\\Documents\\projects\\999_testing_data\\app_transactions_all_tab_split.csv
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### upload all methods by app code from text file
+
+POST {{baseUrl}}/app_methods/csv HTTP/1.1
+x-Auth-Token: {{authToken}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="column_delimiter";
+
+,
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="column_quote";
+
+"
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="app_code";
+
+portal
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="fisier"; filename="app_transactions_all.xlsx"
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+< C:\\~\\Documents\\projects\\999_testing_data\\app_transactions_for_portal.csv
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

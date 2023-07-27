@@ -1,0 +1,7 @@
+### rsa keys
+
+GET {{baseUrl}}/rsa/keys HTTP/1.1
+
+### static files
+
+GET {{baseUrl}}/static/index.html HTTP/1.1

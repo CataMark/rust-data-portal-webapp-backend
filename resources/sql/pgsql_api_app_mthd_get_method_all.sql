@@ -1,0 +1,1 @@
+select * from portal.tbl_int_app_transactions;
