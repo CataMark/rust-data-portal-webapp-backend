@@ -14,8 +14,8 @@
 - serde
 - jwt
 - openssl
-- dbpool (my own lib
-- ...)
+- dbpool (my own lib)
+- ...
 
 
 ## Prerequisites:
