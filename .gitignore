@@ -1,5 +1,6 @@
 /target
 /tmp
 /.vscode
+/certs
 .env
 thunder-collection_CDG_PORTAL.json
