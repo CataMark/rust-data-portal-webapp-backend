@@ -34,7 +34,7 @@
     -   [x] update item
     -   [x] delete item
     -   [x] upsert from xlsx
-    -   [] upsert from csv
+    -   [ ] upsert from csv
 
 -   [ ] Request Form Multipart - extractor
 
